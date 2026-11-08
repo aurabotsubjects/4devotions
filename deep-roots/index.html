@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Roots — 2-Year Bible Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f2ea;--card:#fffdf8;--ink:#2b2a26;--mute:#6f6b60;--line:#e2dccd;--acc:#5f7a61;--acc2:#3f5a42;
+--h1:#f6e08a;--h2:#bfdcb8;--h3:#f1c1b0;--h4:#bcd3ea}
+:root[data-theme=dark]{--bg:#181a17;--card:#20231f;--ink:#e9e6dc;--mute:#9a9689;--line:#33372f;--acc:#8fb192;--acc2:#a9c8ab;
+--h1:#6b5d1f;--h2:#3d5a3a;--h3:#6b3d2e;--h4:#33506e}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Figtree,system-ui,sans-serif}
+.serif{font-family:Newsreader,Georgia,serif}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+.brand{font:600 1.35rem Newsreader,Georgia,serif;cursor:pointer}
+nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.navSelect{padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:.88rem Figtree,system-ui,sans-serif;max-width:170px;appearance:auto}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--acc2);color:#fff;border:0;padding:10px 20px;border-radius:8px;font-weight:500}
+[data-theme=dark] .btn{color:#111}
+.ghost{background:none;border:1px solid var(--line);color:var(--ink);padding:8px 14px;border-radius:8px}
+.ghost.active{background:var(--acc2);color:#fff;border-color:var(--acc2)}
+[data-theme=dark] .ghost.active{color:#111}
+.btn:focus-visible,.ghost:focus-visible,textarea:focus-visible,.v:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+main{max-width:760px;margin:0 auto;padding:0 20px 80px}
+.hero{padding:0 0 40px}
+.hero h1{font:400 clamp(2.6rem,8vw,4.4rem)/1.05 Newsreader,Georgia,serif;margin:0 0 20px;letter-spacing:-.02em}
+.hero p{font-size:1.15rem;color:var(--mute);max-width:34em}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:28px}
+.prog{height:6px;background:var(--line);border-radius:3px;margin:40px 0 6px;overflow:hidden}
+.prog i{display:block;height:100%;width:.14%;min-width:4px;background:var(--acc)}
+.small{font-size:.88rem;color:var(--mute)}
+.wk{display:grid;grid-template-columns:64px 1fr auto;gap:8px;width:100%;text-align:left;margin-bottom:8px;background:var(--card);align-items:center}
+.daySelect{width:100%;padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:1rem Figtree,system-ui,sans-serif;margin-bottom:4px;appearance:auto}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:28px;margin-top:48px}
+.pillars h3{font:600 1.15rem Newsreader,serif;margin:0 0 4px}
+.pillars p{margin:0;color:var(--mute);font-size:.95rem}
+.flow{margin-top:48px;border-top:1px solid var(--line)}
+.flow div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+.dayhead{padding:44px 0 12px}
+.dayhead h2{font:400 2.4rem/1.1 Newsreader,serif;margin:4px 0 6px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-top:20px}
+.step h3{margin:0 0 2px;font:600 1.25rem Newsreader,serif;display:flex;justify-content:space-between;gap:10px}
+.step h3 span{font:400 .85rem Figtree;color:var(--mute)}
+.step p.q{margin:14px 0 6px}
+textarea{width:100%;min-height:76px;resize:vertical;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;padding:10px 12px}
+.xr{font-size:.92rem;color:var(--mute);margin:8px 0 0}
+ul.sum{margin:14px 0 0;padding:0 0 0 1.2em}
+ul.sum li{margin:0 0 10px;line-height:1.5}
+ul.sum li:last-child{margin-bottom:0}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.sw{width:24px;height:24px;border-radius:50%;border:2px solid var(--line);padding:0}
+.sw.on{border-color:var(--ink)}
+.text{font:1.22rem/1.85 Newsreader,Georgia,serif}
+.v{cursor:pointer;border-radius:3px;padding:1px 0}
+.v sup{font:600 .68rem Figtree;color:var(--acc);margin-right:4px}
+.v:hover{background:rgba(127,127,100,.12)}
+.v[data-c="1"]{background:var(--h1)}.v[data-c="2"]{background:var(--h2)}.v[data-c="3"]{background:var(--h3)}.v[data-c="4"]{background:var(--h4)}
+.bref{color:var(--acc2);text-decoration:none;border-bottom:1px solid currentColor}
+.bref:hover{opacity:.75}
+.v.flash{background:var(--acc);transition:background 2s ease}
+.pin{color:var(--acc2);font-size:.9rem;margin-left:3px;cursor:pointer}
+.pop{position:fixed;inset:auto 0 0 0;max-width:520px;margin:0 auto 16px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:0 8px 30px rgba(0,0,0,.18);z-index:20;display:none}
+.pop.show{display:block}
+.pop textarea{min-height:90px;margin:8px 0}
+.banner{display:block;width:calc(100% + 48px);height:180px;margin:-22px -24px 18px;object-fit:cover;border-radius:11px 11px 0 0}
+.hero-img{display:block;width:100%;aspect-ratio:21/9;object-fit:cover;border-radius:16px;margin-top:32px}
+[data-theme=dark] .banner,[data-theme=dark] .hero-img{filter:brightness(.82) saturate(.95)}
+#print-sheet{display:none}
+footer{text-align:center}
+[hidden]{display:none!important}
+@media print{
+ body{background:#fff;color:#000;font-size:11pt}
+ header,main,.pop{display:none!important}
+ #print-sheet{display:block;font-family:Georgia,serif;padding:0}
+ #print-sheet h1{font-size:20pt;margin:0}
+ #print-sheet h2{font-size:12pt;border-bottom:1px solid #999;margin:16pt 0 4pt;padding-bottom:2pt}
+ #print-sheet p{margin:3pt 0;white-space:pre-wrap}
+ #print-sheet .qq{font-style:italic;color:#444}
+ #print-sheet .hl{background:#eee}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand" onclick="go('home')">Deep Roots</div>
+ <nav>
+  <button class="ghost" id="yearToggleNav" onclick="toggleYearView()" title="Switch between Year 1 and Year 2" hidden>Year 1</button>
+  <select class="navSelect" id="daySelectNav" aria-label="Jump to a specific day"><option value="">Jump to day…</option></select>
+  <button class="ghost" onclick="go('home')" aria-label="Back to landing page">☰ Menu</button>
+  <button class="ghost" onclick="go('day')">Today</button>
+  <button class="ghost" onclick="openBible()" title="Read any book and chapter">📖 Bible</button>
+  <button class="ghost" id="transBtn" aria-label="Switch Bible translation" title="Switch between KJV and WEB text">KJV</button>
+  <button class="ghost" id="themeBtn" aria-label="Toggle dark mode">Night</button>
+ </nav>
+</header>
+
+<main>
+<section id="home">
+ <img class="hero-img" id="heroImg" alt="" decoding="async">
+ <div class="hero" style="padding-top:40px">
+  <h1>Two years.<br>The whole Bible.<br>Unhurried.</h1>
+  <p>A quiet thirty minutes each morning: read a passage, notice what's there, follow it through the rest of Scripture, and bring it into your week. You do the Berean work; the app just asks good questions.</p>
+  <div class="row">
+   <button class="btn" onclick="openDay(1)">Begin Day 1</button>
+   <span class="small">Genesis 1 · about 30 minutes</span>
+  </div>
+  <div class="prog"><i></i></div>
+  <div class="small">Day 1 of 730. Missed a day? Nothing to catch up on.</div>
+ </div>
+ <div class="pillars">
+  <div><h3>Christ at the centre</h3><p>Every passage is read as part of one story that points to Him.</p></div>
+  <div><h3>Scripture, not verdicts</h3><p>Prompts ask and observe. They never tell you what to conclude.</p></div>
+  <div><h3>Spirit and prayer</h3><p>Room to listen, and to practise adoration, confession, thanks and intercession.</p></div>
+ </div>
+ <div id="week"></div>
+ <div class="flow serif">
+  <div><span>Passage</span><span class="small">8–10 min</span></div>
+  <div><span>Nuggets</span><span class="small">3–5 min</span></div>
+  <div><span>Connections</span><span class="small">3–5 min</span></div>
+  <div><span>Life reflection</span><span class="small">5–7 min</span></div>
+  <div><span>Holy Spirit</span><span class="small">2–3 min</span></div>
+  <div><span>Prayer</span><span class="small">3–5 min</span></div>
+ </div>
+</section>
+
+<section id="day" hidden>
+ <div class="dayhead">
+  <div class="small" id="dayTag"></div>
+  <h2 id="dayTitle"></h2>
+  <div class="row" style="margin-top:12px">
+   <button class="btn" onclick="printDay()">Print today's study</button>
+   <button class="ghost" onclick="clearMarks()">Clear highlights</button>
+   <span class="small" id="saved">Saved automatically</span>
+  </div>
+ </div>
+ <div id="steps"></div>
+</section>
+
+<section id="bible" hidden>
+ <div class="dayhead">
+  <h2>Read the Bible</h2>
+  <p class="small" style="margin:0 0 16px">Any book, any chapter — switch translation with the KJV/WEB button up top.</p>
+  <div class="row" style="margin-top:0;gap:8px">
+   <select class="daySelect" id="bibleBook" aria-label="Book" style="width:auto;flex:1;min-width:160px"></select>
+   <select class="daySelect" id="bibleChap" aria-label="Chapter" style="width:auto;flex:0 0 90px"></select>
+  </div>
+  <div class="row" style="margin-top:12px">
+   <button class="ghost" onclick="bibleStep(-1)">← Previous chapter</button>
+   <button class="ghost" onclick="bibleStep(1)">Next chapter →</button>
+  </div>
+ </div>
+ <div class="step"><div class="text" id="bibleText"><p class="small">Loading…</p></div></div>
+</section>
+</main>
+
+<div class="pop" id="pop" role="dialog" aria-label="Verse note">
+ <div class="tools"><strong id="popTitle"></strong><span style="flex:1"></span>
+  <button class="sw" data-c="1" style="background:var(--h1)" aria-label="Promise"></button>
+  <button class="sw" data-c="2" style="background:var(--h2)" aria-label="Praise"></button>
+  <button class="sw" data-c="3" style="background:var(--h3)" aria-label="Conviction"></button>
+  <button class="sw" data-c="4" style="background:var(--h4)" aria-label="Question"></button>
+  <button class="ghost" id="popNone">No colour</button></div>
+ <textarea id="popNote" placeholder="Add a note to this verse…"></textarea>
+ <div class="row" style="margin:0"><button class="btn" id="popSave">Save</button><button class="ghost" id="popClose">Close</button></div>
+</div>
+
+<div id="print-sheet"></div>
+
+<script src="data-year1.js"></script>
+<script src="data-year2.js"></script>
+<script src="data-images.js"></script>
+<script>
+let V=[],STEPS=[],NUG=[];
+const TAKE={"id":"take","t":"Today's takeaway","m":"","qs":[{"th":"Short and plain works best, something like \"God speaks and order comes.\" It doesn't need to summarise the whole chapter.","q":"What is the one sentence you want to remember from today?"}]};
+const KEY="deeproots-v1";
+let S={f:{},c:{},n:{},theme:null};
+try{S=Object.assign(S,JSON.parse(localStorage.getItem(KEY)||"{}"))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S));const s=document.getElementById("saved");s.textContent="Saved";setTimeout(()=>s.textContent="Saved automatically",1200)}catch(e){}};
+const $=s=>document.querySelector(s);
+const esc=t=>t.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+function go(v){$("#home").hidden=v!=="home";$("#day").hidden=v!=="day";$("#bible").hidden=v!=="bible";scrollTo(0,0)}
+
+function build(){
+ let h=`<div class="step"><h3>Passage <span>8–10 min · KJV</span></h3>
+ <p class="xr" style="margin:0 0 12px">Tap any verse to highlight it or add a note.</p><div class="text" id="text"></div></div>`;
+ h+=`<div class="step"><h3>Nuggets <span>3–5 min</span></h3><p class="xr" style="margin:0 0 4px">Things worth knowing before you go deeper.</p>`+
+  NUG.map(n=>`<p class="q" style="margin-top:16px"><b class="serif" style="font-size:1.1rem">${n.h}</b><br>${n.b}</p>`).join("")+`</div>`;
+ STEPS.forEach(s=>{
+  h+=`<div class="step"><h3>${s.t}<span>${s.m}</span></h3>`+(s.xr?`<p class="xr">${s.xr}</p>`:"")+
+  s.qs.map((q,i)=>`<p class="q serif" style="font-style:italic;font-size:1.05rem">${q.th}</p><p class="q" style="margin-top:10px"><b>${q.q}</b></p><textarea data-k="${s.id}${i}" aria-label="${esc(q.q)}"></textarea>`).join("")+`</div>`;
+ });
+ $("#steps").innerHTML=h;
+ document.querySelectorAll("textarea[data-k]").forEach(t=>{t.value=S.f[t.dataset.k]||"";t.oninput=()=>{S.f[t.dataset.k]=t.value;save()}});
+ renderText();
+}
+function renderText(){
+ $("#text").innerHTML=V.map((v,i)=>{const n=i+1;
+  return `<span class="v" tabindex="0" data-n="${n}" ${HL.c[n]?`data-c="${HL.c[n]}"`:""}><sup>${n}</sup>${v}</span>${HL.n[n]?`<span class="pin" title="${esc(HL.n[n])}" data-n="${n}">📌</span>`:""} `}).join("");
+ document.querySelectorAll(".v,.pin").forEach(e=>{e.onclick=()=>openPop(+e.dataset.n);e.onkeydown=k=>{if(k.key==="Enter")openPop(+e.dataset.n)}});
+}
+let cur=0,col=0;
+function openPop(n){cur=n;col=HL.c[n]||0;$("#popTitle").textContent=DAYS[day-1].ref+":"+n;$("#popNote").value=HL.n[n]||"";mark();$("#pop").classList.add("show")}
+function mark(){document.querySelectorAll(".sw").forEach(b=>b.classList.toggle("on",+b.dataset.c===col))}
+document.querySelectorAll(".sw").forEach(b=>b.onclick=()=>{col=+b.dataset.c;mark()});
+$("#popNone").onclick=()=>{col=0;mark()};
+$("#popClose").onclick=()=>$("#pop").classList.remove("show");
+$("#popSave").onclick=()=>{const t=$("#popNote").value.trim();
+ col?HL.c[cur]=col:delete HL.c[cur];t?HL.n[cur]=t:delete HL.n[cur];save();renderText();$("#pop").classList.remove("show")};
+function clearMarks(){if(confirm("Remove all highlights and verse notes for today?")){HL.c={};HL.n={};save();renderText()}}
+
+function printDay(){
+ const nm={1:"Promise",2:"Praise",3:"Conviction",4:"Question"};
+ let h=`<h1>Deep Roots · Day ${day}</h1><p>${DAYS[day-1].ref} · Printed ${new Date().toLocaleDateString(undefined,{dateStyle:"long"})}</p>`;
+ const hv=Object.keys(HL.c).map(Number).sort((a,b)=>a-b),nv=Object.keys(HL.n).map(Number).sort((a,b)=>a-b);
+ if(hv.length){h+=`<h2>Highlights</h2>`+hv.map(n=>`<p><b>v${n}</b> (${nm[HL.c[n]]}) <span class="hl">${esc(V[n-1])}</span></p>`).join("")}
+ if(nv.length){h+=`<h2>Verse notes</h2>`+nv.map(n=>`<p><b>v${n}:</b> ${esc(HL.n[n])}</p>`).join("")}
+ if(NUG.length)h+=`<h2>Nuggets</h2>`+NUG.map(n=>`<p><b>${n.h}.</b> ${n.b}</p>`).join("");
+ STEPS.forEach(s=>{const a=s.qs.map((q,i)=>[q.q,(S.f[pre()+s.id+i]||"").trim()]).filter(x=>x[1]);
+  if(a.length)h+=`<h2>${s.t}</h2>`+a.map(x=>`<p class="qq">${esc(x[0])}</p><p>${esc(x[1])}</p>`).join("")});
+ if(h.indexOf("<h2>")<0)h+=`<p>Nothing written yet.</p>`;
+ $("#print-sheet").innerHTML=h;print();
+}
+
+const setTheme=t=>{document.documentElement.dataset.theme=t;$("#themeBtn").textContent=t==="dark"?"Day":"Night"};
+setTheme(S.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));
+$("#themeBtn").onclick=()=>{S.theme=document.documentElement.dataset.theme==="dark"?"light":"dark";setTheme(S.theme);save()};
+</script>
+<script>
+const DAYS=[...YEAR1,...YEAR2];
+let day=1,HL;
+let TRANS=S.trans==="web"?"web":"kjv";
+$("#transBtn").textContent=TRANS.toUpperCase();
+$("#transBtn").onclick=()=>{TRANS=TRANS==="web"?"kjv":"web";S.trans=TRANS;save();$("#transBtn").textContent=TRANS.toUpperCase();DAYS.forEach(d=>{if(d.api)d.v=null});loadDay(day);if($("#bible")&&!$("#bible").hidden)loadBibleChapter()};
+S.hl=S.hl||{};if(!S.hl[1]&&(Object.keys(S.c||{}).length||Object.keys(S.n||{}).length))S.hl[1]={c:S.c,n:S.n};
+/* Images live in data-images.js. BANNER maps a study-step id to an image key
+   (Passage and Nuggets are placed directly in build()). */
+const BANNER={prayer:"prayer",con:"river",life:"staff",spirit:"dove",back:"hands"};
+const banner=k=>IMAGES[k]?`<img class="banner" src="${IMAGES[k].src}" alt="${esc(IMAGES[k].alt)}" style="object-position:${IMAGES[k].pos||'50% 50%'}" decoding="async">`:"";
+/* Free, public-domain KJV audio narration (wordproject.org), no API key needed.
+   Book numbers follow the standard 66-book KJV order. */
+const BOOK_NUM={Genesis:1,Exodus:2,Leviticus:3,Numbers:4,Deuteronomy:5,Joshua:6,Judges:7,Ruth:8,"1 Samuel":9,"2 Samuel":10,"1 Kings":11,"2 Kings":12,"1 Chronicles":13,"2 Chronicles":14,Ezra:15,Nehemiah:16,Esther:17,Job:18,Psalm:19,Proverbs:20,Ecclesiastes:21,"Song of Solomon":22,Isaiah:23,Jeremiah:24,Lamentations:25,Ezekiel:26,Daniel:27,Hosea:28,Joel:29,Amos:30,Obadiah:31,Jonah:32,Micah:33,Nahum:34,Habakkuk:35,Zephaniah:36,Haggai:37,Zechariah:38,Malachi:39,Matthew:40,Mark:41,Luke:42,John:43,Acts:44,Romans:45,"1 Corinthians":46,"2 Corinthians":47,Galatians:48,Ephesians:49,Philippians:50,Colossians:51,"1 Thessalonians":52,"2 Thessalonians":53,"1 Timothy":54,"2 Timothy":55,Titus:56,Philemon:57,Hebrews:58,James:59,"1 Peter":60,"2 Peter":61,"1 John":62,"2 John":63,"3 John":64,Jude:65,Revelation:66};
+function audioUrl(ref){const m=/^(.*)\s(\d+)$/.exec(ref||"");if(!m)return null;const b=BOOK_NUM[m[1]];return b?`https://www.wordpocket.org/bibles/app/audio/1/${b}/${m[2]}.mp3`:null}
+/* Free, public-domain WEB audio narration (publicdomainaudiobibles.com, David Williams), no API key needed. */
+const WEB_FOLDER={1:"Gen",2:"Exo",3:"Lev",4:"Num",5:"Deu",6:"Jos",7:"Jdg",8:"Rut",9:"1Sam",10:"2Sam",11:"1Kings",12:"2Kings",13:"1Chron",14:"2Chron",15:"Ezra",16:"Neh",17:"Est",18:"Job",19:"Psa",20:"Prov",21:"Ecc",22:"Song",23:"Isa",24:"Jer",25:"Lam",26:"Ezk",27:"Dan",28:"Hos",29:"Joel",30:"Amos",31:"Oba",32:"Jon",33:"Mic",34:"Nah",35:"Hab",36:"Zep",37:"Hag",38:"Zec",39:"Mal",40:"Mat",41:"Mark",42:"Luke",43:"John",44:"Acts",45:"Rom",46:"1Cor",47:"2Cor",48:"Gal",49:"Eph",50:"Phi",51:"Col",52:"1Th",53:"2Th",54:"1Ti",55:"2Ti",56:"Tit",57:"Phm",58:"Heb",59:"Jas",60:"1Pe",61:"2Pe",62:"1Jn",63:"2Jn",64:"3Jn",65:"Jud",66:"Rev"};
+const WEB_NAME={1:"Genesis",2:"Exodus",3:"Leviticus",4:"Numbers",5:"Deuteronomy",6:"Joshua",7:"Judges",8:"Ruth",9:"1Samuel",10:"2Samuel",11:"1Kings",12:"2Kings",13:"1Chronicles",14:"2Chronicles",15:"Ezra",16:"Nehemiah",17:"Esther",18:"Job",19:"Psalms",20:"Proverbs",21:"Ecclesiastes",22:"SongofSolomon",23:"Isaiah",24:"Jeremiah",25:"Lamentations",26:"Ezekiel",27:"Daniel",28:"Hosea",29:"Joel",30:"Amos",31:"Obadiah",32:"Jonah",33:"Micah",34:"Nahum",35:"Habakkuk",36:"Zephaniah",37:"Haggai",38:"Zechariah",39:"Malachi",40:"Matthew",41:"Mark",42:"Luke",43:"John",44:"Acts",45:"Romans",46:"1Corinthians",47:"2Corinthians",48:"Galatians",49:"Ephesians",50:"Philippians",51:"Colossians",52:"1Thessalonians",53:"2Thessalonians",54:"1Timothy",55:"2Timothy",56:"Titus",57:"Philemon",58:"Hebrews",59:"James",60:"1Peter",61:"2Peter",62:"1John",63:"2John",64:"3John",65:"Jude",66:"Revelation"};
+function audioUrlWeb(ref){const m=/^(.*)\s(\d+)$/.exec(ref||"");if(!m)return null;const b=BOOK_NUM[m[1]];if(!b)return null;const bn=b<10?"0"+b:""+b,ch=m[2].length<2?"0"+m[2]:m[2];return `https://publicdomainaudiobibles.com/content/mp3/WEBD/${bn}_${WEB_FOLDER[b]}/${bn}_${WEB_NAME[b]}_${ch}.mp3`}
+/* Reveals the audio player on click, then watches for it actually starting to stream; if nothing plays within a few seconds (the free source is down, slow, or the file is missing), shows a plain-language fallback message instead of leaving a silently stuck player. */
+function revealAudio(btn){const wrap=btn.parentElement;wrap.hidden=true;const audio=wrap.nextElementSibling;audio.hidden=false;const msg=audio.nextElementSibling;let started=false;
+ const mark=()=>{started=true};
+ audio.addEventListener("playing",mark,{once:true});
+ audio.addEventListener("timeupdate",mark,{once:true});
+ setTimeout(()=>{if(!started&&audio.readyState<2&&msg)msg.hidden=false},7000)}
+function audioFailed(audio){const msg=audio.nextElementSibling;if(msg)msg.hidden=false}
+
+/* ---- Free-reading Bible (any book, any chapter) + clickable verse references ---- */
+const BOOK_CHAPTERS={"Genesis":50,"Exodus":40,"Leviticus":27,"Numbers":36,"Deuteronomy":34,"Joshua":24,"Judges":21,"Ruth":4,"1 Samuel":31,"2 Samuel":24,"1 Kings":22,"2 Kings":25,"1 Chronicles":29,"2 Chronicles":36,"Ezra":10,"Nehemiah":13,"Esther":10,"Job":42,"Psalm":150,"Proverbs":31,"Ecclesiastes":12,"Song of Solomon":8,"Isaiah":66,"Jeremiah":52,"Lamentations":5,"Ezekiel":48,"Daniel":12,"Hosea":14,"Joel":3,"Amos":9,"Obadiah":1,"Jonah":4,"Micah":7,"Nahum":3,"Habakkuk":3,"Zephaniah":3,"Haggai":2,"Zechariah":14,"Malachi":4,"Matthew":28,"Mark":16,"Luke":24,"John":21,"Acts":28,"Romans":16,"1 Corinthians":16,"2 Corinthians":13,"Galatians":6,"Ephesians":6,"Philippians":4,"Colossians":4,"1 Thessalonians":5,"2 Thessalonians":3,"1 Timothy":6,"2 Timothy":4,"Titus":3,"Philemon":1,"Hebrews":13,"James":5,"1 Peter":5,"2 Peter":3,"1 John":5,"2 John":1,"3 John":1,"Jude":1,"Revelation":22};
+const BOOK_LIST=Object.keys(BOOK_NUM);
+const bibleApi=(book,ch)=>book.toLowerCase().replace(/\s+/g,"")+"+"+ch;
+$("#bibleBook").innerHTML=BOOK_LIST.map(b=>`<option value="${esc(b)}">${esc(b)}</option>`).join("");
+function fillBibleChap(book){const n=BOOK_CHAPTERS[book]||1,sel=$("#bibleChap");let o="";for(let i=1;i<=n;i++)o+=`<option value="${i}">${i}</option>`;sel.innerHTML=o}
+fillBibleChap(BOOK_LIST[0]);
+$("#bibleBook").onchange=()=>{fillBibleChap($("#bibleBook").value);$("#bibleChap").value="1";loadBibleChapter()};
+$("#bibleChap").onchange=loadBibleChapter;
+function openBible(){go("bible");if(!$("#bibleBook").value)$("#bibleBook").value=BOOK_LIST[0];loadBibleChapter()}
+function bibleStep(dir){const book=$("#bibleBook").value,max=BOOK_CHAPTERS[book]||1;let ch=+$("#bibleChap").value+dir;
+ if(ch<1){const i=BOOK_LIST.indexOf(book);if(i>0){const pb=BOOK_LIST[i-1];$("#bibleBook").value=pb;fillBibleChap(pb);ch=BOOK_CHAPTERS[pb]}else ch=1}
+ else if(ch>max){const i=BOOK_LIST.indexOf(book);if(i<BOOK_LIST.length-1){const nb=BOOK_LIST[i+1];$("#bibleBook").value=nb;fillBibleChap(nb);ch=1}else ch=max}
+ $("#bibleChap").value=ch;loadBibleChapter()}
+async function loadBibleChapter(){const book=$("#bibleBook").value,ch=$("#bibleChap").value,api=bibleApi(book,ch),k="dr-"+api+"-"+TRANS,t=$("#bibleText");
+ t.innerHTML=`<p class="small">Loading…</p>`;
+ let c=null;try{c=localStorage.getItem(k)}catch(e){}
+ try{let a;if(c)a=JSON.parse(c);else{const r=await fetch("https://bible-api.com/"+api+"?translation="+TRANS);a=(await r.json()).verses.map(x=>x.text.trim().replace(/\s+/g," "));try{localStorage.setItem(k,JSON.stringify(a))}catch(e){}}
+  if($("#bibleBook").value!==book||$("#bibleChap").value!==ch)return;
+  t.innerHTML=a.map((v,i)=>`<span class="v" data-n="${i+1}" tabindex="0"><sup>${i+1}</sup>${v}</span> `).join("");
+  if(window.__pendingVerse){const vEl=t.querySelector(`.v[data-n="${window.__pendingVerse}"]`);if(vEl){vEl.scrollIntoView({block:"center"});vEl.classList.add("flash");setTimeout(()=>vEl.classList.remove("flash"),2500)}window.__pendingVerse=null}}
+ catch(e){t.innerHTML=`<p class="small">Couldn't load ${esc(book)} ${esc(ch)} (needs internet the first time). <a target="_blank" rel="noopener" href="https://www.biblegateway.com/passage/?search=${encodeURIComponent(book+" "+ch)}&version=${TRANS==="web"?"WEB":"KJV"}">Read it on Bible Gateway</a>.</p>`}}
+/* Turns "Book Chapter[:Verse[-Verse]]" mentions in app-written text into links that open the free-reading Bible at that spot. */
+const REF_RE=new RegExp("\\b("+BOOK_LIST.map(b=>b.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|")+")\\s(\\d{1,3})(?::(\\d{1,3})(?:[-–]\\d{1,3})?)?\\b","g");
+function linkRefs(str){if(!str)return str;return str.replace(REF_RE,(m,book,ch,v)=>{let dCh=ch,dV=v||"";if(BOOK_CHAPTERS[book]===1&&!v){dV=ch;dCh="1"}return `<a href="#" class="bref" data-book="${esc(book)}" data-ch="${dCh}" data-v="${dV}" onclick="openBibleRef(this);return false">${m}</a>`})}
+function openBibleRef(el){const book=el.dataset.book,ch=el.dataset.ch,v=el.dataset.v;
+ if(!BOOK_CHAPTERS[book])return;
+ fillBibleChap(book);$("#bibleBook").value=book;$("#bibleChap").value=ch;
+ window.__pendingVerse=v||null;go("bible");loadBibleChapter()}
+
+{const h=$("#heroImg");h.src=IMAGES.hero.src;h.alt=IMAGES.hero.alt;h.style.objectPosition=IMAGES.hero.pos}
+const pk=d=>d===1?"":"d"+d+"_",pre=()=>pk(day);
+function loadDay(n){day=n;S.cur=n;const D=DAYS[n-1];STEPS=D.steps.concat(TAKE);NUG=D.nug;HL=S.hl[n]=S.hl[n]||{c:{},n:{}};const stale=D.api&&D.vt&&D.vt!==TRANS;V=stale?[]:(D.v||[]);build();if(D.api&&(!D.v||stale))fetchPass(D)}
+function openDay(n){if(n<1||n>DAYS.length)return;loadDay(n);go("day");try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+async function fetchPass(D){const k="dr-"+D.api+"-"+TRANS,n=day;let c=null;try{c=localStorage.getItem(k)}catch(e){}
+ try{let a;if(c)a=JSON.parse(c);else{const r=await fetch("https://bible-api.com/"+D.api+"?translation="+TRANS);a=(await r.json()).verses.map(x=>x.text.trim().replace(/\s+/g," "));try{localStorage.setItem(k,JSON.stringify(a))}catch(e){}}
+  D.v=a;D.vt=TRANS;if(day===n){V=a;renderText()}}
+ catch(e){const t=$("#text");if(t&&day===n)t.innerHTML=`<p class="small">The passage couldn’t load (it needs internet the first time). <a target="_blank" rel="noopener" href="https://www.biblegateway.com/passage/?search=${encodeURIComponent(D.ref)}&version=${TRANS==="web"?"WEB":"KJV"}">Read ${D.ref} on Bible Gateway</a>, then come back for the questions.</p>`}}
+function renderText(){const t=$("#text");if(!t)return;if(!V.length){t.innerHTML=`<p class="small">Loading…</p>`;return}
+ t.innerHTML=V.map((v,i)=>{const n=i+1;return `<span class="v" tabindex="0" data-n="${n}" ${HL.c[n]?`data-c="${HL.c[n]}"`:""}><sup>${n}</sup>${v}</span>${HL.n[n]?`<span class="pin" title="${esc(HL.n[n])}" data-n="${n}">📌</span>`:""} `}).join("");
+ t.querySelectorAll(".v,.pin").forEach(e=>{e.onclick=()=>openPop(+e.dataset.n);e.onkeydown=k=>{if(k.key==="Enter")openPop(+e.dataset.n)}})}
+function build(){const D=DAYS[day-1];$("#dayTag").textContent=`Day ${day} of 730 · ${D.tag}`;$("#dayTitle").textContent=D.ref;let h="";
+ if(D.rest)h+=`<div class="step">${banner("hero")}<h3>This week <span>look back</span></h3>`+DAYS.slice(Math.max(0,day-7),day-1).map((d,j)=>{const i=Math.max(0,day-7)+j;const t=(S.f[pk(i+1)+"take0"]||"").trim();return `<p class="q"><b class="serif">Day ${i+1} · ${d.ref}</b> · <a href="#" onclick="openDay(${i+1});return false">open</a><br><span class="small">${t?esc(t):"No takeaway written"}</span></p>`}).join("")+`</div>`;
+ else{const tName=D.api?(TRANS==="web"?"WEB":"KJV"):"KJV";const au=D.api&&TRANS==="web"?audioUrlWeb(D.ref):audioUrl(D.ref);h+=`<div class="step">${banner("passage")}<h3>Passage <span>8–10 min · ${tName}</span></h3><p class="xr" style="margin:0 0 12px">Tap any verse to highlight it or add a note.${D.api?` Switch translation with the <b>${TRANS.toUpperCase()}</b> button up top.`:""}</p>`+(au?`<p class="xr" style="margin:0 0 6px">Prefer to listen? <button class="ghost" style="padding:2px 10px;font-size:.85em" onclick="revealAudio(this)">🔊 Listen to this chapter (${tName} audio)</button></p><audio controls preload="none" style="width:100%;margin:0 0 4px" hidden src="${au}" onerror="audioFailed(this)">Your browser can't play audio. <a href="${au}">Download the narration</a>.</audio><p class="xr" hidden style="margin:0 0 14px">This audio source seems to be unavailable right now — sorry about that. You can try again later, or <a href="${au}" target="_blank" rel="noopener">open the file directly</a> to check.</p>`:"")+`<div class="text" id="text"></div></div>`}
+ if(!D.rest&&D.sum&&D.sum.length)h+=`<div class="step"><h3>Summary <span>1 min</span></h3><p class="xr" style="margin:0 0 4px">Retell it in your own words, then check the main points below.</p><ul class="sum">`+D.sum.map(s=>`<li>${s}</li>`).join("")+`</ul></div>`;
+ if(NUG.length)h+=`<div class="step">${banner("nuggets")}<h3>Nuggets <span>3–5 min</span></h3><p class="xr" style="margin:0 0 4px">Things worth knowing before you go deeper.</p>`+NUG.map(n=>`<p class="q" style="margin-top:16px"><b class="serif" style="font-size:1.1rem">${n.h}</b><br>${linkRefs(n.b)}</p>`).join("")+`</div>`;
+ STEPS.forEach(s=>{h+=`<div class="step">${banner(BANNER[s.id])}<h3>${s.t}<span>${s.m}</span></h3>`+(s.xr?`<p class="xr">${linkRefs(s.xr)}</p>`:"")+s.qs.map((q,i)=>`<p class="q serif" style="font-style:italic;font-size:1.05rem">${linkRefs(q.th)}</p><p class="q" style="margin-top:10px"><b>${linkRefs(q.q)}</b></p><textarea data-k="${pre()}${s.id}${i}" aria-label="${esc(q.q)}"></textarea>`).join("")+`</div>`});
+ h+=`<div class="row" style="justify-content:space-between;margin-top:28px"><button class="ghost" onclick="openDay(${day-1})" ${day<2?"disabled":""}>← Previous</button><button class="btn" onclick="openDay(${day+1})" ${day>=DAYS.length?"hidden":""}>Next day →</button></div>`;
+ $("#steps").innerHTML=h;document.querySelectorAll("textarea[data-k]").forEach(t=>{t.value=S.f[t.dataset.k]||"";t.oninput=()=>{S.f[t.dataset.k]=t.value;save()}});renderText();scrollTo(0,0)}
+const YEAR1_LEN=365,HAS_YEAR2=DAYS.length>YEAR1_LEN;
+$("#week").innerHTML=`<h3 class="serif" style="font-size:1.5rem;margin:48px 0 4px">Jump to any day</h3><p class="small" style="margin:0 0 12px">${DAYS.length} days are built so far — pick one below, or use Next day from Day 1 to move through them in order.</p>`+(HAS_YEAR2?`<div class="row" id="yearToggle" style="gap:8px;margin:0 0 12px"><button class="ghost" data-y="1" onclick="setYearView(1)">Year 1</button><button class="ghost" data-y="2" onclick="setYearView(2)">Year 2</button></div>`:"")+`<select class="daySelect" id="daySelect" aria-label="Jump to a specific day"><option value="">Choose a day…</option></select>`;
+function fillDaySelect(sel,year,placeholder){const startDay=(year===2)?YEAR1_LEN+1:1,endDay=(year===2)?DAYS.length:Math.min(YEAR1_LEN,DAYS.length);let optHtml="";
+ for(let d=startDay;d<=endDay;){const wkStart=d,wkEnd=Math.min(d+6,endDay),wkNum=Math.floor((wkStart-startDay)/7)+1;
+  optHtml+=`<optgroup label="Week ${wkNum} (Day ${wkStart}–${wkEnd})">`+Array.from({length:wkEnd-wkStart+1},(_,k)=>wkStart+k).map(i=>{const dd=DAYS[i-1];return `<option value="${i}">Day ${i} — ${esc(dd.ref)}${dd.rest?" (rest)":""}</option>`}).join("")+`</optgroup>`;
+  d=wkEnd+1}
+ sel.innerHTML=`<option value="">${placeholder}</option>`+optHtml;
+ sel.onchange=()=>{if(sel.value){openDay(+sel.value);sel.value=""}}}
+function setYearView(y){S.yearView=y;save();
+ if(HAS_YEAR2){document.querySelectorAll("#yearToggle button").forEach(b=>b.classList.toggle("active",+b.dataset.y===y));
+  const navBtn=$("#yearToggleNav");navBtn.hidden=false;navBtn.textContent="Year "+y;navBtn.classList.toggle("active",true)}
+ fillDaySelect($("#daySelect"),y,"Choose a day…");
+ fillDaySelect($("#daySelectNav"),y,"Jump to day…")}
+function toggleYearView(){setYearView(S.yearView===2?1:2)}
+setYearView(HAS_YEAR2?(S.yearView||((S.cur||1)>YEAR1_LEN?2:1)):1);
+loadDay(1);
+</script>
+</body>
+</html>

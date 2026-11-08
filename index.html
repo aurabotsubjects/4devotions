@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1b1712">
+<title>Devotions</title>
+<style>
+  :root {
+    --bg: #15120e; --ink: #f3ebdd; --muted: #b5a891; --line: rgba(243,235,221,.12);
+    --gold: #d9b56c; --card: #1f1a14;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 var(--sans); }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(80% 50% at 50% -10%, rgba(217,181,108,.18), transparent 70%),
+      radial-gradient(60% 40% at 100% 100%, rgba(120,90,160,.10), transparent 70%),
+      var(--bg);
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 56px 24px 64px; }
+
+  header { text-align: center; margin-bottom: 44px; }
+  .mark { width: 44px; height: 44px; margin: 0 auto 18px; border-radius: 50%;
+    background: radial-gradient(circle at 50% 60%, #ffe7a8 0 18%, rgba(217,181,108,.55) 19% 34%, transparent 35%);
+    box-shadow: 0 0 40px rgba(217,181,108,.35); }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 6vw, 52px); margin: 0; letter-spacing: .5px; }
+  .greet { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 12px; margin-bottom: 10px; }
+  .verse { font-family: var(--serif); font-style: italic; color: var(--muted); margin: 16px auto 0; max-width: 520px; font-size: 17px; }
+  .verse span { display: block; font-style: normal; font-size: 13px; letter-spacing: 1px; margin-top: 4px; color: #8f836e; }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } .wrap { padding-top: 40px; } }
+
+  .card { position: relative; display: flex; flex-direction: column; text-decoration: none; color: inherit;
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+  .card:hover, .card:focus-visible { transform: translateY(-4px); border-color: rgba(217,181,108,.5); box-shadow: 0 18px 40px rgba(0,0,0,.4); outline: none; }
+  .art { position: relative; height: 170px; background-size: cover; background-position: center; }
+  .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, var(--card)); }
+  .art .glyph { position: absolute; left: 22px; bottom: 14px; z-index: 1; font-family: var(--serif); font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.85); }
+  .body { padding: 6px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+  .for { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: 26px; margin: 4px 0 6px; line-height: 1.2; }
+  p { margin: 0; color: var(--muted); font-size: 15px; }
+  .meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .chip { font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); color: #d8ccb6; }
+  .go { margin-top: auto; padding-top: 18px; font-size: 14px; color: var(--gold); }
+  .go::after { content: " →"; transition: margin .2s; }
+  .card:hover .go::after { margin-left: 4px; }
+  .last { position: absolute; top: 14px; right: 14px; z-index: 2; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    background: rgba(21,18,14,.75); border: 1px solid rgba(217,181,108,.6); color: var(--gold); padding: 4px 10px; border-radius: 999px;
+    backdrop-filter: blur(6px); display: none; }
+  .card.recent .last { display: block; }
+
+  /* Art for apps without a cover image */
+  .art-roots { background:
+      radial-gradient(120% 80% at 50% 120%, #3f5a2c 0 30%, transparent 31%),
+      repeating-radial-gradient(circle at 50% 130%, transparent 0 18px, rgba(217,181,108,.10) 19px 20px),
+      linear-gradient(180deg, #24331b, #1a2414); }
+  .art-cup { background:
+      radial-gradient(circle at 50% 135%, #c58b4a 0 34%, transparent 35%),
+      radial-gradient(circle at 50% 135%, rgba(255,231,168,.18) 0 52%, transparent 53%),
+      linear-gradient(180deg, #3a2618, #24170f); }
+
+  footer { text-align: center; margin-top: 48px; color: #6f6553; font-family: var(--serif); font-style: italic; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mark" aria-hidden="true"></div>
+    <div class="greet" id="greet">Welcome</div>
+    <h1>Devotions</h1>
+    <p class="verse">“Thy word is a lamp unto my feet, and a light unto my path.”<span>Psalm 119:105</span></p>
+  </header>
+
+  <main class="grid">
+    <a class="card" href="deep-roots/" data-id="deep-roots">
+      <span class="last">Last opened</span>
+      <div class="art art-roots"></div>
+      <div class="body">
+        <div class="for">Personal · daily</div>
+        <h2>Deep Roots</h2>
+        <p>The whole Bible in two years, unhurried. One passage a day, and no catching up if you miss one.</p>
+        <div class="meta"><span class="chip">730 days</span><span class="chip">about 30 min</span></div>
+        <div class="go">Open Deep Roots</div>
+      </div>
+    </a>
+
+    <a class="card" href="revelation/" data-id="revelation">
+      <span class="last">Last opened</span>
+      <div class="art" style="background-image:url('revelation/images/cover.webp')"></div>
+      <div class="body">
+        <div class="for">Personal · course</div>
+        <h2>Revelation</h2>
+        <p>A seventy-day exploration of the last book of the Bible, with timelines, charts and an illustrated guide.</p>
+        <div class="meta"><span class="chip">70 days</span><span class="chip">illustrated</span></div>
+        <div class="go">Open Revelation</div>
+      </div>
+    </a>
+
+    <a class="card" href="first-light/" data-id="first-light">
+      <span class="last">Last opened</span>
+      <div class="art" style="background-image:url('first-light/images/g3-01-title.jpg')"></div>
+      <div class="body">
+        <div class="for">For teachers · mornings</div>
+        <h2>First Light for Teachers</h2>
+        <p>Morning devotions for staff on the giants we face: worry, guilt, unforgiveness, change and self-image.</p>
+        <div class="meta"><span class="chip">10 devotions</span><span class="chip">slides</span></div>
+        <div class="go">Open First Light</div>
+      </div>
+    </a>
+
+    <a class="card" href="mere-christianity/" data-id="mere-christianity">
+      <span class="last">Last opened</span>
+      <div class="art art-cup"></div>
+      <div class="body">
+        <div class="for">Group · leader-led</div>
+        <h2>Fill Your Cup</h2>
+        <p>Fifteen-minute group devotions on C.S. Lewis's <i>Mere Christianity</i>. No prep needed, and everything is on the slides.</p>
+        <div class="meta"><span class="chip">15 min</span><span class="chip">group</span></div>
+        <div class="go">Open Fill Your Cup</div>
+      </div>
+    </a>
+  </main>
+
+  <footer>Soli Deo Gloria</footer>
+</div>
+
+<script>
+  // Greeting by time of day
+  const h = new Date().getHours();
+  document.getElementById('greet').textContent = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
+
+  // Remember which devotion was opened last and mark it
+  let last = null;
+  try { last = localStorage.getItem('4devotions.last'); } catch (e) {}
+  document.querySelectorAll('.card').forEach((card) => {
+    if (card.dataset.id === last) card.classList.add('recent');
+    card.addEventListener('click', () => { try { localStorage.setItem('4devotions.last', card.dataset.id); } catch (e) {} });
+  });
+</script>
+</body>
+</html>
